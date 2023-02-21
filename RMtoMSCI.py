@@ -65,20 +65,13 @@ def RMtoMSCI(CADUSDRATE):
     
     #HIGLIGHT FROM HERE 
     import re
-    from os import remove
-    from shutil import move
     import os
-    import win32com.shell.shell as shell
-    import win32event
-    import win32com
-    from win32com import client
     import subprocess
     import time
     import numpy as np
     from datetime import date
-    from shutil import copyfile, copy2
+    from shutil import copyfile, copy2, move
     import datetime
-    import shutil
     
     ### STEP 1
     def getList(j):
