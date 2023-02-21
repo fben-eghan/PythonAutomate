@@ -8,10 +8,10 @@ Created on Fri Dec 16 15:43:26 2022
 import BAU_Filer
 
 #File FOFs from X drive to Q drive
-#BAU_Filer.FOFStoDexia()
+BAU_Filer.FOFStoDexia()
 
 #Files cash upload file
-#BAU_Filer.CashFiler()
+BAU_Filer.CashFiler()
 
 #Removes old pricing files
 BAU_Filer.PxRemover()
@@ -29,4 +29,4 @@ WAIT UNTIL REPORTS FINISH RUNNING
 BAU_Filer.Rpt_Filer()
 
 #Files NT test reports. Ready to FTP
-#BAU_Filer.Rpt_FilerNT()
+BAU_Filer.Rpt_FilerNT()
