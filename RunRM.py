@@ -15,7 +15,7 @@ CADUSDRATE = .7433
 print(RMtoMSCI(CADUSDRATE))
 
 #STEP 2: For UAT
-#print(RMtoMSCI_NT(CADUSDRATE))
+print(RMtoMSCI_NT(CADUSDRATE))
 '''
 if report date != t-1, use Ctrl+H on HLD file to replace t-1 with report date
 Then run MSCI-ZPO2 with the required filepath and report date
