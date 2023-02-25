@@ -1,2 +1,2 @@
 # PythonAutomate
-Using Python to speed up/automate BAU processes 
+Using Python to streamline BAU processes and transform data.
