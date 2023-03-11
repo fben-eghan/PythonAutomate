@@ -2,76 +2,48 @@
 
     #Removes old pricing files
 def PxRemover():        
-    import re
-    from shutil import move
-    from os import remove
     import os
-    import subprocess
-    import time
-    import pandas as pd
-    import numpy as np
-    from datetime import date
-    from shutil import copyfile, copy2
-    import datetime
-    import shutil
-    import glob
-    
-    lb_ = (pd.datetime.today() - pd.tseries.offsets.BDay(0)).date().strftime('%d%m%y')
-    lb1 = (pd.datetime.today() - pd.tseries.offsets.BDay(0)).date().strftime('%Y%m%d')
-    lb2 = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).date().strftime('%Y%m%d')
-    lb = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).date().strftime('%m-%d-%y')
-    lb3 = (pd.datetime.today() - pd.tseries.offsets.BDay(2)).date().strftime('%Y%m%d')
-    y = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).year
-    m = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).date().strftime('%B')
-    m_ = (pd.datetime.today() - pd.tseries.offsets.BDay(0)).date().strftime('%B')
 
-    
-    remove(r'F:\Portia\FTP\mpx.txt')
-    remove(r'F:\Portia\FTP\mpx2.txt')
-    print(r'Removed mpx txt files')
-    
-    remove(r'F:\Portia\FTP\dailypricesreturn2.txt')
-    remove(r'F:\Portia\FTP\fwdsdailyreturn.txt')
-    remove(r'F:\Portia\FTP\corpcoupons.txt')
-    remove(r'F:\Portia\FTP\fxdailyreturn.txt')
-    print(r'Removed 4 price sourcing files')
+    files_to_remove = [
+        r'F:\Portia\FTP\mpx.txt',
+        r'F:\Portia\FTP\mpx2.txt',
+        r'F:\Portia\FTP\dailypricesreturn2.txt',
+        r'F:\Portia\FTP\fwdsdailyreturn.txt',
+        r'F:\Portia\FTP\corpcoupons.txt',
+        r'F:\Portia\FTP\fxdailyreturn.txt'
+    ]
+
+    for file_path in files_to_remove:
+        try:
+            os.remove(file_path)
+            print(f'Removed {file_path}')
+        except FileNotFoundError:
+            pass
 
 
-def Backup():
-    import re
-    from shutil import move
-    from os import remove
+def backup():
     import os
-    import subprocess
-    import time
-    import pandas as pd
-    import numpy as np
-    from datetime import date
-    from shutil import copyfile, copy2
-    import datetime
     import shutil
-    import glob
-    
-    lb_ = (pd.datetime.today() - pd.tseries.offsets.BDay(0)).date().strftime('%d%m%y')
-    lb1 = (pd.datetime.today() - pd.tseries.offsets.BDay(0)).date().strftime('%Y%m%d')
-    lb2 = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).date().strftime('%Y%m%d')
-    lb = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).date().strftime('%m-%d-%y')
-    lb3 = (pd.datetime.today() - pd.tseries.offsets.BDay(2)).date().strftime('%Y%m%d')
-    y = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).year
-    m = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).date().strftime('%B')
-    m_ = (pd.datetime.today() - pd.tseries.offsets.BDay(0)).date().strftime('%B')
-    
+    from datetime import date
+    import pandas as pd
     feln = r'F:\IT\!! NEW IT\Data Admin\Data Administrators\Felix Notes'
+    y = (pd.datetime.today() - pd.tseries.offsets.BDay(1)).year
     
-    copy2(r'F:\Portia\FTP\ManualPrices.xlsx', r'H:')
-    copy2(r'F:\Portia\FTP\ManualPrices.xlsx', feln)
-    print(r'ManualPrices.xlsx backed up')  
-    
-    copy2(r'Q:\Rec\Cash Rec {}.xlsx'.format(y), r'H:')
-    copy2(r'Q:\Rec\Cash Rec {}.xlsx'.format(y), feln)
-    print(r'Cash Rec {}.xlsx backed up'.format(y))
-    
-    
+    files_to_backup = [
+        r'F:\Portia\FTP\ManualPrices.xlsx',
+        r'Q:\Rec\Cash Rec {}.xlsx'.format(y)
+    ]
+
+    for file_path in files_to_backup:
+        try:
+            shutil.copy2(file_path, r'H:')
+            shutil.copy2(file_path, feln)
+            print(f'{os.path.basename(file_path)} backed up')
+        except FileNotFoundError:
+            pass
+
+
+   
 def E2Ebak():
     import re
     from os import remove
